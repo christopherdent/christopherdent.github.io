@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "** Why did I sign up for Bootcamp?**"
+title:      "Why did I sign up for Bootcamp?"
 date:       2019-07-01 11:45:25 -0400
 permalink:  why_did_i_sign_up_for_bootcamp
 ---
