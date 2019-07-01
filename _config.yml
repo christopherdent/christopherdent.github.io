@@ -1,11 +1,11 @@
 # Site settings
 author: Christopher Dent
-title: 
+title: Chris D's Flatiron Blog
 header-img: img/home-bg.png
 email: christopherdent01@gmail.com
 copyright_name: Christopher Dent
 description: > # this means to ignore newlines until "baseurl:"
-  
+  My blog assignments
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  christopherdent
