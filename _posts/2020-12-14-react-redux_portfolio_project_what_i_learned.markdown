@@ -14,7 +14,7 @@ So on to my app.  I was also entering this project with the clock very much tick
 
 I have branded Dinofinder 2020 as “the prehistoric card collection that anyone can edit.” Nothing at all influenced that tagline of course.  Just kidding – the app is actually intended to be both a fun little library of virtual dinosaur ‘cards’ but also a research tool that would encourage kids to learn the very basics of internet research, using web-based resources (some linked to in the app) to create their very own dino card collections.  The app begins with a presentation of three world maps – the Triassic World, the Jurassic World, and the Cretaceous World (just like my CLI app structured)
   
-	![](https://drive.google.com/file/d/1-MhiZ-W09sTxHib4UdI9ESt6sqddIWEU/preview)
+	![](https://dinofinder2020.s3.amazonaws.com/dinofinder+screen.png)
 
 Clicking on one of the worlds will present you with different categories of creatures for each world, herbivores, carnivores, avians and marine life.  I’ll stop here to highlight one of the coolest parts of React, which was the React Router.  I loved using the Router to create my own custom routes to navigate through the app, all while being on the same single page.  I may be wrong but it seems to me like a lot of the hassles of connecting with the backend are removed by this – the backend routes really don’t matter at all except for your fetche requests, it was a concept I hadn’t encountered before and I just felt really good about the flexibility it provided.  
 
@@ -41,7 +41,7 @@ So, after watching another dozen or so hours of project builds, I started messin
 
 
 
-![](https://drive.google.com/file/d/11e9zVowT0iG5uvUcr2sQjPD4Tb0ZnqlR/view?usp=sharing)
+![](https://dinofinder2020.s3.amazonaws.com/redux+screen.png)
 			What do we have here?  Objects nested differently – mutants! 
 
 Looking at that diff I was immediately able to narrow down the problem to the reducer, and I could also see what was going wrong – the object that the state used to be was being changed – or MUTATED – into something new altogether, hence unexpected results (with edit, a duplicate card render; with delete, just nothing happening until reload).
