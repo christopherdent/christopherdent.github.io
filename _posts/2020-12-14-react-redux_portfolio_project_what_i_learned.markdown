@@ -12,10 +12,11 @@ And it wasn’t – until Redux came on in to muddy the waters for me! It wasn�
 
 So on to my app.  I was also entering this project with the clock very much ticking on how much time I have to complete the program.  I have faced a number of challenges during 2020 (aside from COVID)  that have taken precious time away from coding.  So I wanted to do something simple – and when I started watching the ‘expense tracker’ project build I realized that simple is possible for this final project.  For a while I had wanted to build out on the concept I started in my very first project, the Ruby CLI project, Prehistoric Life: Creatures of the Mesozoic.  Could I do a graphical interpretation of this my gem by using React?  A spiritual sequel?  Well I set off to find out and Dinofinder 2020 was born.
 
-I have branded Dinofinder 2020 as “the prehistoric card collection that anyone can edit.” Nothing at all influenced that tagline of course.  Just kidding – the app is actually intended to be both a fun little library of virtual dinosaur ‘cards’ but also a research tool that would encourage kids to learn the very basics of internet research, using web-based resources (some linked to in the app) to create their very own dino card collections.  The app begins with a presentation of three world maps – the Triassic World, the Jurassic World, and the Cretaceous World (just like my CLI app structured)
+I have branded Dinofinder 2020 as “the prehistoric card collection that anyone can edit.” Nothing at all influenced that tagline of course.  Just kidding – the app is actually intended to be both a fun little library of virtual dinosaur ‘cards’ but also a research tool that would encourage kids to learn the very basics of internet research, using web-based resources (some linked to in the app) to create their very own dino card collections.  The app begins with a presentation of three world maps – the Triassic World, the Jurassic World, and the Cretaceous World (just like my CLI app was structured).
   
-	![](https://dinofinder2020.s3.amazonaws.com/dinofinder+screen.png)
-
+ ![](https://dinofinder2020.s3.amazonaws.com/dinofinder+screen.png)
+	
+ 
 Clicking on one of the worlds will present you with different categories of creatures for each world, herbivores, carnivores, avians and marine life.  I’ll stop here to highlight one of the coolest parts of React, which was the React Router.  I loved using the Router to create my own custom routes to navigate through the app, all while being on the same single page.  I may be wrong but it seems to me like a lot of the hassles of connecting with the backend are removed by this – the backend routes really don’t matter at all except for your fetche requests, it was a concept I hadn’t encountered before and I just felt really good about the flexibility it provided.  
 
 Anyway, on to the challenges:
