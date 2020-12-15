@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "React-Redux Portfolio Project: What I Learned"
-date:       2020-12-15 03:22:30 +0000
+date:       2020-12-14 22:22:31 -0500
 permalink:  react-redux_portfolio_project_what_i_learned
 ---
 
@@ -32,55 +32,62 @@ I didn’t know if it was an issue with my actions, form/button, my container, h
 
 Not.  
 
+![](https://womenwriteaboutcomics.com/wp-content/uploads/2015/11/Mutant-Menace-300x286.jpg)
 
 
-https://womenwriteaboutcomics.com/wp-content/uploads/2015/11/Mutant-Menace-300x286.jpg
-
-
-While visually the desired effect was achieved with this approach, it resulted in an infinite loop of fetching, something my poor laptop made clear to me when its fan started roaring like a jet engine.  I was happy to see the desired behavior, but I knew deep down that this wasn’t the right way to fix it and that I couldn’t submit my project like that.  
+While visually the desired effect was achieved with this approach, it resulted in an infinite loop of fetching which just wasn't right, something my poor laptop made clear to me when its fan started roaring like a jet engine.  I was happy to see the desired behavior, but I knew deep down that this wasn’t the right way to fix it and that I couldn’t submit my project like that.  
  
 So, after watching another dozen or so hours of project builds, I started messing around with the React and then the Redux dev tools.  Redux tools are what helped me pinpoint the problem (insert redux screenshot here).
 
+
+
+![](https://drive.google.com/file/d/11e9zVowT0iG5uvUcr2sQjPD4Tb0ZnqlR/view?usp=sharing)
 			What do we have here?  Objects nested differently – mutants! 
 
 Looking at that diff I was immediately able to narrow down the problem to the reducer, and I could also see what was going wrong – the object that the state used to be was being changed – or MUTATED – into something new altogether, hence unexpected results (with edit, a duplicate card render; with delete, just nothing happening until reload).
 
 So we went from this (do you still have the bad code from the reducers, maybe in the backup??)
 
-    case 'DELETE_DINOSAUR':
-      const dinosaurs = state.dinosaurs.filter(dinosaur => dinosaur.id !== action.id); ///keep all the dinos except the one who's id matches action id
-      return {...state, dinosaurs}
+```
+case 'DELETE_DINOSAUR':
+	const dinosaurs = state.dinosaurs.filter(dinosaur => dinosaur.id !== action.id); ///keep all the dinos except the one who's id matches action id
+	return {...state, dinosaurs}
 
-    case 'EDIT_DINOSAUR':
+case 'EDIT_DINOSAUR':
 
-      return {...state, dinosaurs: [...state.dinosaurs, action.payload]}
-
+	return {...state, dinosaurs: [...state.dinosaurs, action.payload]}
+```
 
 
 to this:
 
 
-    case 'DELETE_DINOSAUR':
-           return {
-        ...state, dinosaurs: [...state.dinosaurs.filter(dinosaur => dinosaur.id === action.dinosaurId ? false : true)]   ///returning a copy of the state as well as an array of all dinos other than the one that was just deleted.
-      }
+```
+case 'DELETE_DINOSAUR':
+			 return {
+		...state, dinosaurs: [...state.dinosaurs.filter(dinosaur => dinosaur.id === action.dinosaurId ? false : true)]   ///returning a copy of the state as well as an array of all dinos other than the one that was just deleted.
+	}
 
-    case 'EDIT_DINOSAUR':
-    let dinos = state.dinosaurs.map(dinosaur => {
-      if (dinosaur.id === action.payload.id) {
-        return action.payload  ///return the modified dinosaur card
-      } else {
-        return dinosaur
-      }
-    })
-    return {...state, dinosaurs: dinos}  //return the state with the modified dinosaur
+case 'EDIT_DINOSAUR':
+let dinos = state.dinosaurs.map(dinosaur => {
+	if (dinosaur.id === action.payload.id) {
+		return action.payload  ///return the modified dinosaur card
+	} else {
+		return dinosaur
+	}
+})
+return {...state, dinosaurs: dinos}  //return the state with the modified dinosaur
+```
+
 
 And the mutant menace was defeated.  It was hard to figure this one out, but as soon as I saw the diff in the above screenshot it because pretty clear what was wrong and from there it was just some trial and error to figure out.  
 
 The final leg of this project for me was CSS.  I’d actually started pretty early on with vanilla bootstrap incorporated into this project and was moderately happy with the results, but they needed tweaking.  I re-read the project requirements and noticed they suggested using REACT bootstrap, not just plain old bootstrap.  Why?  That was the question I asked myself.  I like my vanilla bootstrap.  My previous projects all used it and I was getting comfortable with it.  So I did some research and realized that again, just because I was getting a desired effect on screen did not mean that I was doing it right.  I learned that one big benefit of using react bootstrap was animations – something that I wish I’d known earlier because the react-bootstrap accordion provided t he same effect I scrapped together with my “showHide” method (but damned if I was taking showHide() out of my project after the work I put into it!)  Aside from animation though, I learned that the syntax of the virtual DOM may not always be compatbile with the actual DOM so using a CSS library tailored to a traditional DOM might cause problems down the road, problems that I didn’t need.  I also realized that I’d already encountered some of these problems, with bootstrap styles not displaying as I’d expected.  So, off to learn react-bootstrap I went.  
 
-    From the react bootstrap docs:
-Methods and events using jQuery is done imperatively by directly manipulating the DOM. In contrast, React uses updates to the state to update the virtual DOM. In this way, React-Bootstrap provides a more reliable solution by incorporating Bootstrap functionality into React's virtual DOM. Below are a few examples of how React-Bootstrap components differ from Bootstrap.
-So I toyed with React-Bootstrap and was happy with how easy it was to work with, easier than vanilla Bootstrap really.  Everything is packaged up into neat little React components.  Aside from Accordion, and Card, I haven’t used too many of these components, but they leave so much room for improvement.  
+From the react bootstrap docs:
+
+`Methods and events using jQuery is done imperatively by directly manipulating the DOM. In contrast, React uses updates to the state to update the virtual DOM. In this way, React-Bootstrap provides a more reliable solution by incorporating Bootstrap functionality into React's virtual DOM. Below are a few examples of how React-Bootstrap components differ from Bootstrap.`
+
+So I toyed with React-Bootstrap and was happy with how easy it was to work with, easier than vanilla Bootstrap really.  Everything is packaged up into neat little React components.  Aside from Accordion, and Card, I haven’t used too many of these components, but they leave so much room for improvement and future tinkering.  
 
 
